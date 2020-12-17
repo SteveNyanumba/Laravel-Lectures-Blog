@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', 'App\Http\Controllers\HomeController@homepage')->name('welcome');
 
 Auth::routes();
 
-Route::get('/profile', 'App\Http\Controllers\HomeController@index')->name('profile');
+Route::get('/profile', 'App\Http\Controllers\HomeController@profile')->name('profile');
 
 
+Route::group(['prefix' => 'api'], function () {
+    Route::apiResource('blog','App\Http\Controllers\BlogsController');
+});
