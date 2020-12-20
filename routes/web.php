@@ -16,11 +16,18 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+<<<<<<< HEAD
 // Route::get('/', 'App\Http\Controllers\BlogsController@index')->name('welcome');
 Route::resource('','App\Http\Controllers\BlogsController');
+=======
+Route::get('/', 'App\Http\Controllers\HomeController@homepage')->name('welcome');
+>>>>>>> e0461ba0fff1882e1b73b555834562abeffed271
 
 Auth::routes();
 
-Route::get('/profile', 'App\Http\Controllers\HomeController@index')->name('profile');
+Route::get('/profile', 'App\Http\Controllers\HomeController@profile')->name('profile');
 
 
+Route::group(['prefix' => 'api'], function () {
+    Route::apiResource('blog','App\Http\Controllers\BlogsController');
+});
