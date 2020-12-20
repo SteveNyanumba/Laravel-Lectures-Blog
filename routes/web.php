@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// Route::get('/', 'App\Http\Controllers\BlogsController@index')->name('welcome');
+Route::resource('','App\Http\Controllers\BlogsController');
 
 Auth::routes();
 
